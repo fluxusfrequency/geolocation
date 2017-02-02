@@ -6,11 +6,17 @@ gulp.task('moveHtml', () => {
     .pipe(gulp.dest('public'));
 });
 
+function handleError(e) {
+  console.log('error in build', e.message, e.stack);
+  this.emit('end');
+}
+
 gulp.task('build', () => {
   return gulp.src('src/js/index.js')
     .pipe(babel({
       presets: ['es2015']
     }))
+    .on('error', handleError)
     .pipe(gulp.dest('public'));
 });
 
