@@ -18,7 +18,7 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('public'));
 });
 
-gulp.task('build', () => {
+gulp.task('buildJs', () => {
   return gulp.src('src/js/index.js')
     .pipe(babel({
       presets: ['es2015']
@@ -27,8 +27,10 @@ gulp.task('build', () => {
     .pipe(gulp.dest('public'));
 });
 
+gulp.task('build', ['moveHtml', 'styles', 'buildJs']);
+
 gulp.task('default', () => {
-  gulp.watch('src/js/*.js', ['build']);
+  gulp.watch('src/js/*.js', ['buildJs']);
   gulp.watch('src/html/*.html', ['moveHtml']);
   gulp.watch('src/less/*.less', ['styles']);
 });
