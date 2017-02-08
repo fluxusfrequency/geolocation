@@ -1,15 +1,22 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
+const less = require('gulp-less');
+
+function handleError(e) {
+  console.log('error in build', e.message, e.stack);
+  this.emit('end');
+}
 
 gulp.task('moveHtml', () => {
   return gulp.src('src/html/index.html')
     .pipe(gulp.dest('public'));
 });
 
-function handleError(e) {
-  console.log('error in build', e.message, e.stack);
-  this.emit('end');
-}
+gulp.task('styles', () => {
+  return gulp.src('src/less/index.less')
+    .pipe(less())
+    .pipe(gulp.dest('public'));
+});
 
 gulp.task('build', () => {
   return gulp.src('src/js/index.js')
@@ -23,5 +30,6 @@ gulp.task('build', () => {
 gulp.task('default', () => {
   gulp.watch('src/js/*.js', ['build']);
   gulp.watch('src/html/*.html', ['moveHtml']);
+  gulp.watch('src/less/*.less', ['styles']);
 });
 

@@ -3,15 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <title>Geolocation Sample App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
-    <div class="header">
-      <h1>Browser Geolocation</h1>
-      <button id="geolocation-button">Find my position</button>
-      <button id="watch-button">Watch my position</button>
-      <button id="clear-watch-button">Clear watch</button>
+    <div class="container text-center">
+      <div class="header">
+        <h1>Browser Geolocation</h1>
+        <button id="geolocation-button" class="btn btn-success">Find my position</button>
+        <button id="watch-button" class="btn btn-info">Watch my position</button>
+        <button id="clear-watch-button" class="btn btn-warning">Clear watch</button>
+      </div>
+      <div id="map"></div>
     </div>
-    <div id="map"></div>
   </body>
 </html>
