@@ -31,7 +31,6 @@
   }
 
   function watchLocation() {
-    // TODO: why can't I trigger another watch
     const watchId = navigator.geolocation.watchPosition(onLocationChange, onGeolocateError);
     window.localStorage.setItem('lastWatch', watchId);
   }
@@ -44,19 +43,29 @@
 
   function showMap(latitude, longitude) {
     const $map = document.getElementById('map');
-    const img = new Image();
-    img.src = 'https://maps.googleapis.com/maps/api/staticmap?center=' + latitude + ',' + longitude + '&zoom=13&size=400x400&sensor=false&markers=color:blue|' + latitude + ',' + longitude;
-
-    // Remove the old maps
-    while ($map.firstChild) {
-      $map.removeChild($map.firstChild);
-    }
-    $map.appendChild(img);
+    const position = {lat: latitude, lng: longitude};
+    const map = new google.maps.Map($map, {
+      center: position,
+      zoom: 6
+    });
+    const marker = new google.maps.Marker({map, position});
   }
 
   function hideMap() {
     const $map = document.getElementById('map');
     $map.innerHTML = '';
+  }
+
+  window.enableButtons = () => {
+    const $geolocateButton = document.getElementById('geolocation-button');
+    const $watchButton =  document.getElementById('watch-button');
+    const $clearWatchButton = document.getElementById('clear-watch-button');
+
+    $geolocateButton.disabled = false;
+    $watchButton.disabled = false;
+    $clearWatchButton.disabled = false;
+
+    console.log('Google Maps API loaded');
   }
 
   document.addEventListener('DOMContentLoaded', () => {

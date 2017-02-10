@@ -11,11 +11,12 @@
     <div class="container text-center">
       <div class="header">
         <h1>Browser Geolocation</h1>
-        <button id="geolocation-button" class="btn btn-success">Find my position</button>
-        <button id="watch-button" class="btn btn-info">Watch my position</button>
-        <button id="clear-watch-button" class="btn btn-warning">Clear watch</button>
+        <button id="geolocation-button" disabled class="btn btn-success">Find my position</button>
+        <button id="watch-button" disabled class="btn btn-info">Watch my position</button>
+        <button id="clear-watch-button" disabled class="btn btn-warning">Clear watch</button>
       </div>
       <div id="map"></div>
     </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=enableButtons"></script>
   </body>
 </html>
