@@ -58,40 +58,38 @@
     $map.innerHTML = '';
   }
 
-  const mockShopResponse = {
-    shops: [
-      {
-        id: 1,
-        name: "The Laughing Goat",
-        lat: 40.0195,
-        lng: -105.2731
-      },
-      {
-        id: 2,
-        name: "Tee and Cakes",
-        lat: 40.0181,
-        lng: -105.2771
-      },
-      {
-        id: 3,
-        name: "The Cup",
-        lat: 40.0190,
-        lng: -105.2753
-      },
-      {
-        id: 4,
-        name: "Boxcar",
-        lat: 40.0198,
-        lng: -105.2714
-      }
-    ]
+  const mockMuseumResponse = {
+    {
+      id: 1,
+      name: "Altes Museum",
+      lat: 52.5195,
+      lng:13.3987
+    },
+    {
+      id: 2,
+      name: "Berlin Wall Memorial",
+      lat: 52.4861,
+      lng: 13.4720
+    },
+    {
+      id: 3,
+      name: "DDR Museum",
+      lat: 52.5196,
+      lng: 13.4027
+    },
+    {
+      id: 4,
+      name: "Gemäldegalerie",
+      lat: 51.0534
+      lng: 13.7347
+    }
   };
 
-  function showNearbyShops() {
+  function showNearbyMuseums() {
     if (!window.map || !window.markers) { return; }
 
-    mockShopResponse.shops.forEach((shop) => {
-      const { lat, lng, name } = shop;
+    mockMuseum.museums.forEach((museum) => {
+      const { lat, lng, name } = museum;
       const position = { lat, lng };
       const title = name;
       const marker = new google.maps.Marker({ map, position, title });
@@ -122,6 +120,6 @@
     $geolocateButton.addEventListener('click', geolocate);
     $watchButton.addEventListener('click', watchLocation);
     $clearWatchButton.addEventListener('click', clearWatch);
-    $showNearbyButton.addEventListener('click', showNearbyShops);
+    $showNearbyButton.addEventListener('click', showNearbyMuseums);
   });
 })();
