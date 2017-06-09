@@ -58,7 +58,7 @@
     $map.innerHTML = '';
   }
 
-  const mockMuseumResponse = {
+  const mockMuseumResponse = [
     {
       id: 1,
       name: "Altes Museum",
@@ -80,15 +80,15 @@
     {
       id: 4,
       name: "Gemäldegalerie",
-      lat: 51.0534
+      lat: 51.0534,
       lng: 13.7347
     }
-  };
+  ];
 
   function showNearbyMuseums() {
     if (!window.map || !window.markers) { return; }
 
-    mockMuseum.museums.forEach((museum) => {
+    mockMuseumResponse.forEach((museum) => {
       const { lat, lng, name } = museum;
       const position = { lat, lng };
       const title = name;
